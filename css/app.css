@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+/** Base page **/
+.playground {
+  background: #546E7A;
+  border-radius: 20px;
+  margin: auto;
+  padding: 10px;  
+  width: 500px;
+}
+
+.game {
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  padding: 10px;
+}
+
+/** Game content**/
+.game-row,
+.col-game,
+.col-check {
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-row {
+  margin: 20px 0;
+}
+
+.col-game {
+  flex: 2;
+}
+
+.col-check {
+  flex: 1;
+}
+
+.col-game .circle,
+.game-buttons button {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.circle,
+.small-circle {
+  background-color: #78909C;
+}
+
+.col-check .small-circle {
+  align-self: flex-end;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+/** Game controls **/
+.game-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.control {
+  cursor: pointer;
+  border: 0;
+}
+
+.submit {
+  background-color: #673AB7;
+  background-position: center;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  font: 600 13px Arial, sans-serif;
+  margin: 10px auto;
+  padding: 10px 25px;
+  transition: background 0.8s;
+}
+.submit:hover {
+  background: #673AB7 radial-gradient(circle, transparent 1%, #673AB7 1%) center/15000%;
+}
+.submit:active {
+  background-color: #7E57C2;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/** Color list **/
+.correct-color {
+  background-color: #FFFFFF;
+}
+.correct-position {
+  background-color: #8BC34A;
+}
+
+.red {
+  background-color: #E53935;
+}
+.yellow {
+  background-color: #FDD835;
+}
+.blue {
+  background-color: #1E88E5;
+}
+.green {
+  background-color: #43A047;
+}
