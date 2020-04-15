@@ -56,13 +56,12 @@ function Mastermind(gameMaxSize, gameMaxTry) {
    * @param {string} color The choosen color
    */
   this.addColor = function addColor(color) {
+    if (this.currentTry > maxTry) return;
     /** FIXME: Defensive programming needed !
      * TODO: Block unauthorized colors
      */
     if (this.userCombination.length === gameSize) return;
     this.userCombination.push(color);
-    // TEMP: Remove after test
-    console.log("[DEV] Actual combination", this.userCombination);
   };
 
   /**
@@ -71,7 +70,6 @@ function Mastermind(gameMaxSize, gameMaxTry) {
    * @method removeColor
    */
   this.removeColor = function removeColor() {
-    console.log('[DEV] POP Content of array');
     this.userCombination.pop();
   };
 
@@ -90,8 +88,8 @@ function Mastermind(gameMaxSize, gameMaxTry) {
     for (let i = 0; i < this.userCombination.length; i++) {
       validator.push(validateColor(this.userCombination[i], i));
     }
+    // Update game status
     this.userCombination = [];
-
     this.currentTry++;
     // Sort the array and reverse alphabetic content to have: valid colors, good positions, invalid colors ("valid", "position", "invalid")
     validator.sort().reverse();
@@ -140,8 +138,6 @@ function Mastermind(gameMaxSize, gameMaxTry) {
       let j = randomChoise(maxColor);
       combination.push(VALID_COLORS[j]);
     }
-    // TEMP: Retire this wen finished
-    console.info("[DEV]", combination);
     return combination;
   }
 
