@@ -1,9 +1,14 @@
 * {
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
   cursor: pointer;
+}
+
+p {
+  margin: 4px 0;
 }
 
 /** Base page **/
@@ -23,6 +28,18 @@ button {
 }
 
 /** Game content**/
+.loose, .win {
+  background-color: rgb(129, 212, 250);
+  border: 1px solid rgb(100, 181, 246);
+  border-radius: 5px;
+  display: none;
+  text-align: center;
+}
+
+.show {
+  display: block;
+}
+
 .game-row,
 .col-game,
 .col-check {
@@ -72,8 +89,8 @@ button {
   border: 0;
 }
 
-.reset-last,
-.submit {
+.btn,
+.btn {
   background-color: #673AB7;
   background-position: center;
   border: 0;
@@ -85,12 +102,12 @@ button {
   padding: 10px 25px;
   transition: background 0.8s;
 }
-.reset-last:hover,
-.submit:hover {
+.btn:hover,
+.btn:hover {
   background: #673AB7 radial-gradient(circle, transparent 1%, #673AB7 1%) center/15000%;
 }
-.reset-last:active,
-.submit:active {
+.btn:active,
+.btn:active {
   background-color: #7E57C2;
   background-size: 100%;
   transition: background 0s;

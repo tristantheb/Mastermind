@@ -2,13 +2,18 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Init the rows selector
    */
-  var $rows = document.querySelectorAll('.game-row > .col-game');
   var gameSize = 4;
-  var lines = 0;
-  for (let $row of $rows) {
-    lines++;
-    $row.setAttribute('id', `row${lines}`);
+  var lines;
+
+  function initRow() {
+    var $rows = document.querySelectorAll('.game-row > .col-game');
+    lines = 0;
+    for (let $row of $rows) {
+      lines++;
+      $row.setAttribute('id', `row${lines}`);
+    }
   }
+  initRow();
 
   /**
    * Generate a new game
@@ -35,16 +40,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  let $win = document.querySelector(".win");
+  let $loose = document.querySelector(".loose");
+
   $validBtn = document.querySelector('.submit');
   $validBtn.addEventListener('click', function () {
     let validList = game.validateCombination();
+    let validTotal = 0;
     for (let i = 0; i < validList.length; i++) {
       let j = i + 1;
       if (validList[i] === 2) {
         toggleColorIntoCorrector("correct-color", j, game);
+        validTotal++;
       } else if (validList[i] === 1) {
         toggleColorIntoCorrector("correct-position", j, game);
       }
+    }
+
+
+    if (validTotal === gameSize) {
+      $win.classList.toggle('show');
+    } else if (game.currentTry > lines) {
+      $loose.classList.toggle('show');
     }
 
     color = null;
@@ -60,6 +77,33 @@ document.addEventListener('DOMContentLoaded', function () {
       color = null;
     }
   });
+
+  $restartBtn = document.querySelectorAll('.restart');
+  for (let $restart of $restartBtn) {
+    $restart.addEventListener('click', function () {
+      game.resetGame();
+      if ($win.classList.contains('show')) $win.classList.toggle('show');
+      if ($loose.classList.contains('show')) $loose.classList.toggle('show');
+
+      let $newRows = document.querySelectorAll('.game-row');
+      for (let $newRow of $newRows) {
+        $newRow.innerHTML = `<div class="col-game">
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+          <div class="hole"></div>
+        </div>
+        <div class="col-check">
+          <div class="small-hole"></div>
+          <div class="small-hole"></div>
+          <div class="small-hole"></div>
+          <div class="small-hole"></div>
+        </div>`;
+      }
+
+      initRow();
+    });
+  }
 });
 
 /**
