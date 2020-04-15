@@ -13,19 +13,18 @@ Mastermind game, using :
     - 4 col validator
   - 4 colors
   - Validate button
-- [ ] Create the **model** zone
-  1. Define a color combination for the player to guess.
-     - TODO: Creating Randomness
-  2. Check the player's combination
-  3. Validate a color
+- [ ] WIP: Create the **model** layer
+  1. [OK] Define a color combination for the player to guess.
+  2. [OK] Check the player's combination
+  3. [OK] Validate a color
      - well placed
      - present
-  4. Validate the entire combination
+  4. [OK] Validate the entire combination
      - get the color name well-placed
      - get the number of colours present but misplaced
-  5. Find out if we can still play
+  5. TODO: Find out if we can still play
   6. TODO: Reset the game
-  7. TODO: Correct a color before validating
-- [ ] Create the **vue** zone
-- [ ] Improve the options
-- [ ] Create the **persist** zone
+  7. [OK] Correct a color before validating
+- [ ] WIP: Create the **view** layer
+- [ ] IMPROVE: Improve the options
+- [ ] TODO: Create the **persist** layer
