@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
     /** TEMP: Console need to be changed by DOM action
      * WIP: Change the view with de validator
      */
+    game.validateCombination();
     console.log(game.validateCombination());
+    color = null;
   });
 
   $resetLastBtn = document.querySelector('.reset-last');
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     game.removeColor();
     toggleColorIntoGame(color, game);
     if (game.userCombination.length > 0) {
-      color = game.VALID_COLORS[game.userCombination.length - 1];
+      color = game.userCombination[game.userCombination.length - 1];
     } else {
       color = null;
     }
@@ -60,11 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
 function toggleColorIntoGame(color, game) {
   let tryNb = game.currentTry;
   let holeNb = game.userCombination.length + 1;
-  /**
-   * TEMP: Console log need to be removed
-   */
-  console.info(game);
   console.log("[DEV] Hole number", holeNb);
   let $hole = document.querySelector(`#row${tryNb} .hole:nth-child(${holeNb})`);
+  console.info('[DEV] Toggle color :', color);
   $hole.classList.toggle(color);
 }

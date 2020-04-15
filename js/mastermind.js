@@ -32,10 +32,10 @@ function Mastermind(gameMaxTry) {
   this.userCombination = [];
 
   /**
-   * @constant {string} CORRECT The color is on correct position
+   * @constant {string} WELL_PLACED The color is on correct position
    * @private
    */
-  const CORRECT = 2;
+  const WELL_PLACED = 2;
 
   /**
    * @constant {string} MISPLACED The color is present on the game but it's not the good placement
@@ -85,8 +85,6 @@ function Mastermind(gameMaxTry) {
    * @private
    */
   this.validateCombination = function validateCombination() {
-    // TEMP: Console log need to be removed
-    console.log('[DEV] → Current try', this.currentTry);
     if (this.userCombination.length !== gameSize) return;
     let validator = [];
     for (let i = 0; i < this.userCombination.length; i++) {
@@ -97,8 +95,6 @@ function Mastermind(gameMaxTry) {
     this.currentTry++;
     // Sort the array and reverse alphabetic content to have: valid colors, good positions, invalid colors ("valid", "position", "invalid")
     validator.sort().reverse();
-    // TEMP: Console log need to be removed
-    console.log('[DEV] ← Current try', this.currentTry);
     return validator;
   };
 
@@ -124,7 +120,7 @@ function Mastermind(gameMaxTry) {
    */
   function validateColor(color, position) {
     if (color === secretCombination[position]) {
-      return CORRECT;
+      return WELL_PLACED;
     } else {
       for (let i = 0; i < secretCombination.length; i++) {
         if (color === secretCombination[i]) return MISPLACED;
