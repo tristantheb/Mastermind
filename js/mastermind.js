@@ -7,7 +7,7 @@ function Mastermind(gameMaxTry) {
   /**
    * @property {number} currentTry The current try
    */
-  var currentTry = 1;
+  this.currentTry = 1;
 
   /**
    * @property {number} maxTry The maximum try can be used before the "Game over"
@@ -15,9 +15,10 @@ function Mastermind(gameMaxTry) {
   var maxTry = gameMaxTry;
 
   /**
-   * @property {array} validColors All the colors can be used in the game
+   * @constant {array} VALID_COLORS All the colors can be used in the game
    */
-  const validColors = ["red", "green", "blue", "yellow"];
+  const VALID_COLORS = ["red", "green", "blue", "yellow"];
+  this.VALID_COLORS = VALID_COLORS;
 
   /**
    * @property {array} secretCombination The combination of the game
@@ -26,8 +27,9 @@ function Mastermind(gameMaxTry) {
 
   /**
    * @property {array} userCombination The combination of the user
+   * @public
    */
-  var userCombination = [];
+  this.userCombination = [];
 
   /**
    * @constant {string} CORRECT The color is on correct position
@@ -57,10 +59,10 @@ function Mastermind(gameMaxTry) {
     /** FIXME: Defensive programming needed !
      * TODO: Block unauthorized colors
      */
-    if (userCombination.length === gameSize) return;
-    userCombination.push(color);
+    if (this.userCombination.length === gameSize) return;
+    this.userCombination.push(color);
     // TEMP: Remove after test
-    console.log("[DEV] Actual combination", userCombination);
+    console.log("[DEV] Actual combination", this.userCombination);
   };
 
   /**
@@ -69,7 +71,8 @@ function Mastermind(gameMaxTry) {
    * @method removeColor
    */
   this.removeColor = function removeColor() {
-    userCombination.pop();
+    console.log('[DEV] POP Content of array');
+    this.userCombination.pop();
   };
 
   /**
@@ -83,18 +86,19 @@ function Mastermind(gameMaxTry) {
    */
   this.validateCombination = function validateCombination() {
     // TEMP: Console log need to be removed
-    console.log('[DEV] → Current try', currentTry);
-    if (userCombination.length !== gameSize) return;
+    console.log('[DEV] → Current try', this.currentTry);
+    if (this.userCombination.length !== gameSize) return;
     let validator = [];
-    for (let i = 0; i < userCombination.length; i++) {
-      validator.push(validateColor(userCombination[i], i));
+    for (let i = 0; i < this.userCombination.length; i++) {
+      validator.push(validateColor(this.userCombination[i], i));
     }
-    userCombination = [];
-    currentTry++;
+    this.userCombination = [];
+
+    this.currentTry++;
     // Sort the array and reverse alphabetic content to have: valid colors, good positions, invalid colors ("valid", "position", "invalid")
     validator.sort().reverse();
     // TEMP: Console log need to be removed
-    console.log('[DEV] ← Current try', currentTry);
+    console.log('[DEV] ← Current try', this.currentTry);
     return validator;
   };
 
@@ -104,8 +108,8 @@ function Mastermind(gameMaxTry) {
    * @public
    */
   this.resetGame = function resetGame() {
-    currentTry = 1;
-    userCombination = [];
+    this.currentTry = 1;
+    this.userCombination = [];
     secretCombination = createCombination(gameSize);
   };
 
@@ -138,7 +142,7 @@ function Mastermind(gameMaxTry) {
     let combination = [];
     for (let i = 0; i < maxColor; i++) {
       let j = randomChoise(maxColor);
-      combination.push(validColors[j]);
+      combination.push(VALID_COLORS[j]);
     }
     // TEMP: Retire this wen finished
     console.info("[DEV]", combination);
