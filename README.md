@@ -25,6 +25,6 @@ Mastermind game, using :
   5. TODO: Find out if we can still play
   6. TODO: Reset the game
   7. [OK] Correct a color before validating
-- [ ] WIP: Create the **view** layer
+- [x] Create the **view** layer
 - [ ] IMPROVE: Improve the options
 - [ ] TODO: Create the **persist** layer

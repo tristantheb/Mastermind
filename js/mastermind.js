@@ -1,8 +1,8 @@
-function Mastermind(gameMaxTry) {
+function Mastermind(gameMaxSize, gameMaxTry) {
   /**
    * @property {number} gameSize The number of choise max needed
    */
-  var gameSize = 4;
+  var gameSize = gameMaxSize;
 
   /**
    * @property {number} currentTry The current try

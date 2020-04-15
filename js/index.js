@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Init the rows selector
    */
   var $rows = document.querySelectorAll('.game-row > .col-game');
+  var gameSize = 4;
   var lines = 0;
   for (let $row of $rows) {
     lines++;
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Generate a new game
    */
-  var game = new Mastermind(lines);
+  var game = new Mastermind(gameSize, lines);
   var color;
 
   /**
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var $buttons = document.querySelectorAll('.control');
   for (let $button of $buttons) {
     $button.addEventListener('click', function () {
+      if (game.userCombination.length === gameSize) return;
       // Check if the color in array is === of the class and add this color to the game
       for (let i = 0; i < game.VALID_COLORS.length; i++) {
         if ($button.classList.contains(game.VALID_COLORS[i])) {
@@ -35,11 +37,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $validBtn = document.querySelector('.submit');
   $validBtn.addEventListener('click', function () {
-    /** TEMP: Console need to be changed by DOM action
-     * WIP: Change the view with de validator
-     */
-    game.validateCombination();
-    console.log(game.validateCombination());
+    let validList = game.validateCombination();
+    for (let i = 0; i < validList.length; i++) {
+      let j = i + 1;
+      if (validList[i] === 2) {
+        toggleColorIntoCorrector("correct-color", j, game);
+      } else if (validList[i] === 1) {
+        toggleColorIntoCorrector("correct-position", j, game);
+      }
+    }
+
     color = null;
   });
 
@@ -62,8 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
 function toggleColorIntoGame(color, game) {
   let tryNb = game.currentTry;
   let holeNb = game.userCombination.length + 1;
-  console.log("[DEV] Hole number", holeNb);
   let $hole = document.querySelector(`#row${tryNb} .hole:nth-child(${holeNb})`);
-  console.info('[DEV] Toggle color :', color);
+  $hole.classList.toggle(color);
+}
+
+/**
+ * Set/Remove the name of the color into the class attribute
+ * @param {string} color The color name
+ */
+function toggleColorIntoCorrector(color, iteration, game) {
+  let tryNb = game.currentTry - 1;
+  let $hole = document.querySelector(`#row${tryNb} + .col-check > .small-hole:nth-child(${iteration})`);
   $hole.classList.toggle(color);
 }
