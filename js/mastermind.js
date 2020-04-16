@@ -56,10 +56,7 @@ function Mastermind(gameMaxSize, gameMaxTry) {
    * @param {string} color The choosen color
    */
   this.addColor = function addColor(color) {
-    if (this.currentTry > maxTry) return;
-    /** FIXME: Defensive programming needed !
-     * TODO: Block unauthorized colors
-     */
+    if (this.currentTry > maxTry || !color || typeof color !== 'string') return;
     if (this.userCombination.length === gameSize) return;
     this.userCombination.push(color);
   };
