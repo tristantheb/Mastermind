@@ -1,3 +1,5 @@
+'use strict';
+
 function Mastermind(gameMaxSize, gameMaxTry) {
   /**
    * @property {number} gameSize The number of choise max needed
@@ -48,6 +50,8 @@ function Mastermind(gameMaxSize, gameMaxTry) {
    * @private
    */
   const INVALID = 0;
+
+  const self = this;
 
   /**
    * Add the color to the user combination array
@@ -118,10 +122,23 @@ function Mastermind(gameMaxSize, gameMaxTry) {
       return WELL_PLACED;
     } else {
       for (let i = 0; i < secretCombination.length; i++) {
-        if (color === secretCombination[i]) return MISPLACED;
+        if (color === secretCombination[i] && checkSameColor(color, position)) return MISPLACED;
       }
     }
     return INVALID;
+  }
+
+  function checkSameColor(color, position) {
+    let countSecret = 0;
+    for (let i = 0; i < secretCombination.length; i++) {
+      if (secretCombination[i] === color) countSecret++;
+    }
+    let countUser = 0;
+    for (let i = 0; i < position; i++) {
+      if (color === self.userCombination[i]) countUser++;
+    }
+    if (countSecret > countUser) return true;
+    if (countSecret <= countUser) return false;
   }
 
   /**

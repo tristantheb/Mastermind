@@ -9,4 +9,3 @@ Mastermind game, using :
 
 - [ ] IMPROVE: Improve the options
 - [ ] TODO: Create the **persist** layer
-- [ ] IMPROVE: Count the color number to improve hints
