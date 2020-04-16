@@ -1,34 +1,62 @@
+:root {
+  --size: 10px;
+}
+
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 button {
   cursor: pointer;
 }
 
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
 p {
   margin: 4px 0;
 }
 
+main {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
 /** Base page **/
 .playground {
-  background: #546E7A;
-  border-radius: 20px;
-  margin: auto;
-  padding: 10px;  
-  width: 500px;
+  background-color: #546E7A;
+  border-radius: calc(var(--size) * 2);
+  padding: var(--size);  
+  width: calc(var(--size) * 50);
+}
+
+.rules {
+  background-color: #546E7A;
+  color: #fff;
+  padding: calc(var(--size) * 2);
+  width: 50%;
 }
 
 .game {
   border-bottom: 1px solid rgba(0, 0, 0, .5);
   display: flex;
   flex-direction: column-reverse;
-  padding: 10px;
+  padding: var(--size);
 }
 
 /** Game content**/
-.loose, .win {
+.info, .loose, .win {
   background-color: rgb(129, 212, 250);
   border: 1px solid rgb(100, 181, 246);
   border-radius: 5px;
@@ -36,7 +64,8 @@ p {
   text-align: center;
 }
 
-.show {
+.info, .show {
+  color: #000;
   display: block;
 }
 
@@ -48,7 +77,7 @@ p {
 }
 
 .game-row {
-  margin: 10px 0;
+  margin: var(--size) 0;
 }
 
 .col-game {
@@ -59,30 +88,31 @@ p {
   flex: 1;
 }
 
-.col-game .hole,
-.game-buttons .control {
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-
 .hole,
 .small-hole {
   background-color: #78909C;
+  display: inline-block;
 }
 
-.col-check .small-hole {
+.hole,
+.game-buttons .control {
+  border-radius: 50%;
+  height: calc(var(--size) * 5);
+  width: calc(var(--size) * 5);
+}
+
+.small-hole {
   align-self: flex-end;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 2);
 }
 
 /** Game controls **/
 .game-buttons {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: var(--size);
 }
 
 .control {
@@ -98,8 +128,8 @@ p {
   color: #fff;
   display: block;
   font: 600 13px Arial, sans-serif;
-  margin: 10px auto;
-  padding: 10px 25px;
+  margin: var(--size) auto;
+  padding: var(--size) calc(var(--size) * 2.5);
   transition: background 0.8s;
 }
 .btn:hover,
@@ -145,4 +175,28 @@ p {
 }
 .yellow {
   background-color: #FDD835;
+}
+
+/**
+ * @media queries
+ */
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --size: 6px;
+  }
+
+  main {
+    flex-direction: column-reverse;
+  }
+  
+  .rules {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  :root {
+    --size: 8px;
+  }
 }

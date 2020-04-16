@@ -92,7 +92,7 @@ function Mastermind(gameMaxSize, gameMaxTry) {
     this.userCombination = [];
     this.currentTry++;
     // Sort the array and reverse alphabetic content to have: valid colors, good positions, invalid colors ("valid", "position", "invalid")
-    //validator.sort().reverse();
+    validator.sort().reverse();
     return validator;
   };
 

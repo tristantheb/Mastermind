@@ -9,171 +9,191 @@
 </head>
 
 <body>
-
-  <div class="playground">
-    <div class="win">
-      <p>You have win ! Congratulation !!!</p>
-      <button class="btn restart">Restart</button>
+  <main>
+    <div class="playground">
+      <div class="win">
+        <p>You have win ! Congratulation !!!</p>
+        <button class="btn restart">Restart</button>
+      </div>
+      <div class="loose">
+        <p>You have loose ! Nooob :P</p>
+        <button class="btn restart">Restart</button>
+      </div>
+      <div class="game">
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+        <div class="game-row">
+          <div class="col-game">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+          </div>
+          <div class="col-check">
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+            <div class="small-hole"></div>
+          </div>
+        </div>
+      </div>
+      <div class="game-buttons">
+        <div class="col-game">
+          <button class="control red" data-color="red"></button>
+          <button class="control blue" data-color="blue"></button>
+          <button class="control green" data-color="green"></button>
+          <button class="control yellow" data-color="yellow"></button>
+        </div>
+        <div class="col-check">
+          <button class="btn reset-last">Remove the last color</button>
+        </div>
+      </div>
+      <button class="btn submit">Check the colours</button>
     </div>
-    <div class="loose">
-      <p>You have loose ! Nooob :P</p>
-      <button class="btn restart">Restart</button>
+    <div class="rules">
+      <h1>Mastermind game</h1>
+      <h2>How to play ?</h2>
+      <p>
+        To win, you have to guess the color list chosen by the game. This list is secret, it will help you we'll have to
+        look!
+      </p>
+      <p>
+        For this, you have a number of lines available to try to find the combination. You have to fill in the holes in
+        the line with the colours at the bottom of the game.<br>
+        Once filled, you just have to validate, the game will give you clues to know if a color is <span
+          class="small-hole correct-color"></span> present but not well-placed, or if you have it <span
+          class="small-hole correct-position"></span> well-placed.
+      </p>
+      <p class="info">
+        <strong>NOTE:</strong> The colors of the clues are not arranged in the same way as the colors in the game, so
+        the clues do not indicate exactly which colors are well placed or not!
+      </p>
     </div>
-    <div class="game">
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-      <div class="game-row">
-        <div class="col-game">
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-          <div class="hole"></div>
-        </div>
-        <div class="col-check">
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-          <div class="small-hole"></div>
-        </div>
-      </div>
-    </div>
-    <div class="game-buttons">
-      <div class="col-game">
-        <button class="control red"></button>
-        <button class="control blue"></button>
-        <button class="control green"></button>
-        <button class="control yellow"></button>
-      </div>
-      <div class="col-check">
-        <button class="btn reset-last">Remove the last color</button>
-      </div>
-    </div>
-    <button class="btn submit">Check the colours</button>
-  </div>
+  </main>
   <script src="./js/mastermind.js"></script>
   <script src="./js/index.js"></script>
 </body>

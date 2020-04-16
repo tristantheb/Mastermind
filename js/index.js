@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
   /**
    * Init the rows selector
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Generate a new game
    */
-  var game = new Mastermind(gameSize, lines);
+  var masterMind = new Mastermind(gameSize, lines);
   var color;
 
   /**
@@ -27,61 +29,57 @@ document.addEventListener('DOMContentLoaded', function () {
   var $buttons = document.querySelectorAll('.control');
   for (let $button of $buttons) {
     $button.addEventListener('click', function () {
-      if (game.userCombination.length === gameSize) return;
+      if (masterMind.userCombination.length === gameSize) return;
       // Check if the color in array is === of the class and add this color to the game
-      for (let i = 0; i < game.VALID_COLORS.length; i++) {
-        if ($button.classList.contains(game.VALID_COLORS[i])) {
-          color = game.VALID_COLORS[i];
-          toggleColorIntoGame(color, game);
-        }
-      }
+      color = $button.dataset.color;
+      toggleColorIntoGame(color, masterMind);
       // Add into the current try array
-      game.addColor(color);
+      masterMind.addColor(color);
     });
   }
 
   let $win = document.querySelector(".win");
   let $loose = document.querySelector(".loose");
 
-  $validBtn = document.querySelector('.submit');
+  const $validBtn = document.querySelector('.submit');
   $validBtn.addEventListener('click', function () {
-    let validList = game.validateCombination();
+    let validList = masterMind.validateCombination();
     let validTotal = 0;
     for (let i = 0; i < validList.length; i++) {
       let j = i + 1;
       if (validList[i] === 2) {
-        toggleColorIntoCorrector("correct-color", j, game);
+        toggleColorIntoCorrector("correct-position", j, masterMind);
         validTotal++;
       } else if (validList[i] === 1) {
-        toggleColorIntoCorrector("correct-position", j, game);
+        toggleColorIntoCorrector("correct-color", j, masterMind);
       }
     }
 
 
     if (validTotal === gameSize) {
       $win.classList.toggle('show');
-    } else if (game.currentTry > lines) {
+    } else if (masterMind.currentTry > lines) {
       $loose.classList.toggle('show');
     }
 
     color = null;
   });
 
-  $resetLastBtn = document.querySelector('.reset-last');
+  const $resetLastBtn = document.querySelector('.reset-last');
   $resetLastBtn.addEventListener('click', function () {
-    game.removeColor();
-    toggleColorIntoGame(color, game);
-    if (game.userCombination.length > 0) {
-      color = game.userCombination[game.userCombination.length - 1];
+    masterMind.removeColor();
+    toggleColorIntoGame(color, masterMind);
+    if (masterMind.userCombination.length > 0) {
+      color = masterMind.userCombination[masterMind.userCombination.length - 1];
     } else {
       color = null;
     }
   });
 
-  $restartBtn = document.querySelectorAll('.restart');
+  const $restartBtn = document.querySelectorAll('.restart');
   for (let $restart of $restartBtn) {
     $restart.addEventListener('click', function () {
-      game.resetGame();
+      masterMind.resetGame();
       if ($win.classList.contains('show')) $win.classList.toggle('show');
       if ($loose.classList.contains('show')) $loose.classList.toggle('show');
 
